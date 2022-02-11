@@ -1,3 +1,10 @@
+<?php
+// 確認bottom資料表內「只有一筆id=1」的資料
+if (isset($_POST['bottom'])) {
+    $Bottom->save(['id' => 1, 'bottom' => $_POST['bottom']]);
+}
+?>
+
 <h1 class="ct">編輯頁尾版權區</h1>
 <form action="?do=bot" method="post">
     <!-- emmet -->
@@ -11,19 +18,7 @@
         </tr>
     </table>
     <div class="ct">
-        <button onclick=edit()>編輯</button> |
-        <button onclick=reset()>重置</button>
+        <input type="submit" value="編輯">
+        <input type="reset" value="重置">
     </div>
 </form>
-
-<script>
-    function edit() {
-        <?php
-        // 確認bottom資料表內「只有一筆id=1」的資料
-        if (isset($_POST['bottom'])) {
-            $Bottom->save(['id' => 1, 'bottom' => $_POST['bottom']]);
-        }
-        ?>
-        location.reload();
-    }
-</script>
