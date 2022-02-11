@@ -139,5 +139,11 @@ $Member=new DB("member");
 $Ord=new DB("ord");
 $Type=new DB("type");
 
+// 手動創建admin帳號
+// $admin['acc']='admin';
+// $admin['pw']='1234';
+// // serializ將陣列組成字串
+// $admin['pr']=serialize([1,2,3,4,5]);
+// $Admin->save($admin);
 
 ?>
