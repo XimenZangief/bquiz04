@@ -15,11 +15,11 @@
         <iframe name="back" style="display:none;"></iframe>
         <div id="main">
                 <div id="top">
-                        <a href="?">
-                                <img src="./home_files/0416.jpg">
+                        <a href="index.php">
+                                <img src="./icon/0416.jpg">
                         </a>
                         <div style="padding:10px;">
-                                <a href="?">回首頁</a> |
+                                <a href="index.php">回首頁</a> |
                                 <a href="?do=news">最新消息</a> |
                                 <a href="?do=look">購物流程</a> |
                                 <a href="?do=buycart">購物車</a> |
