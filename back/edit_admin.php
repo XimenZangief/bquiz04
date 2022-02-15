@@ -29,9 +29,10 @@ $pr=unserialize($row['pr']);
             </td>
         </tr>
     </table>
+    <!-- <button onclick="addAdmin()">新增</buttom> -->
+    <!-- <button onclick="reset()">重置</button> -->
+    <input type="hidden" name="id" value="<?=$row['id'];?>">
+    <button type="submit">新增</button>
+    <button type="reset">重置</button>
 </form>
 <div>
-<!-- <button onclick="addAdmin()">新增</buttom> -->
-<!-- <button onclick="reset()">重置</button> -->
-<button type="submit">新增</button>
-<button type="reset">重置</button>
