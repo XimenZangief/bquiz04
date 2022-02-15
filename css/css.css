@@ -44,7 +44,9 @@ body
 	display:inline-block;
 	width:65%;
 	padding:2%;
-	min-height:550px;
+	/* 題目要求不可超過版面 */
+	overflow: auto;
+	height:550px;
 	border:#000 1px solid;
 }
 #bottom

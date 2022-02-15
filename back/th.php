@@ -12,6 +12,41 @@
 </div>
 
 <!-- 分類區 -->
+<!-- emmet -->
+<!-- table.all>tr.tt>td+td.ct>button*2 -->
+<table class="all">
+    <?php
+    // 找到所有parent=0的大分類，並給予name排序
+    $bigs=$Type->all(['parent'=>0],"ORDER BY name");
+        foreach ($bigs as $key => $big) {
+    ?>
+    <tr class="tt">
+        <td><?=$big['name'];?></td>
+        <td class="ct">
+            <button onclick="edit('<?=$big['id'];?>')">修改</button>
+            <button onclick="del('type','<?=$big['id'];?>')">刪除</button>
+        </td>
+    </tr>
+    <?php
+    // 透過id欄位確認mid所屬的大分類
+    $mids=$Type->all(['parent'=>$big['id']]);
+    if(count($mids)>0){
+        foreach ($mids as $key => $mid) {
+    ?>
+    <!-- tr.pp.ct>td*2 -->
+    <tr class="pp ct">
+        <td><?=$mid['name'];?></td>
+        <td>
+            <button onclick="edit('<?=$mid['id'];?>')">修改</button>
+            <button onclick="del('type','<?=$mid['id'];?>')">刪除</button>
+        </td>
+    </tr>
+    <?php
+        }
+    }
+    }
+    ?>
+</table>
 <hr>
 <h1 class="ct">商品管理</h1>
 <div class="ct">
