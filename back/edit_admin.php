@@ -1,3 +1,10 @@
+<?php
+$row=$Admin->find($_GET['id']);
+// 字串->陣列
+$pr=unserialize($row['pr']);
+?>
+
+<!-- copy from add_admin.php -->
 <h1 class="ct">新增管理帳號</h1>
 <!-- emmet -->
 <!-- table.all>tr*3>td.tt.ct+td.pp>input:text -->
@@ -28,20 +35,3 @@
 <!-- <button onclick="reset()">重置</button> -->
 <button type="submit">新增</button>
 <button type="reset">重置</button>
-<script>
-    // function reset(){
-    //     $("#acc,#pw").val("");
-    //     // prop 指定checked為true/false
-    //     $("input[type='checkbox']").prop('checked',false);
-    // }
-
-    // function addAdmin(){
-    //     let pr=new Array();
-    //     $("input[type='checkbox']").each((idx,dom)=>{
-    //         pr.push($(dom).val());
-    //     })
-    //     $.post("api/save_admin.php",{acc:$("acc").val(),pw:$("#pw").val(),pr},()=>{
-    //         location.href="?do=admin";
-    //     })
-    // }
-</script>
