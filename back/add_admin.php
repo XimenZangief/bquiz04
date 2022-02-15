@@ -22,12 +22,13 @@
             </td>
         </tr>
     </table>
+    <!-- <button onclick="addAdmin()">新增</buttom> -->
+    <!-- <button onclick="reset()">重置</button> -->
+    <button type="submit">新增</button>
+    <button type="reset">重置</button>
 </form>
-<div>
-<!-- <button onclick="addAdmin()">新增</buttom> -->
-<!-- <button onclick="reset()">重置</button> -->
-<button type="submit">新增</button>
-<button type="reset">重置</button>
+
+
 <script>
     // function reset(){
     //     $("#acc,#pw").val("");
