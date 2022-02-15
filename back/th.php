@@ -69,23 +69,31 @@
         <td>狀態</td>
         <td>操作</td>
     </tr>
+    <?php
+    $goods=$Goods->all();
+    foreach ($goods as $key => $good) {
+    ?>
     <tr class="pp ct">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?=$good['no'];?></td>
+        <td><?=$good['name'];?></td>
+        <td><?=$good['stock'];?></td>
+        <td><?=($good['sh'])==1?'販售中':'已下架';?></td>
         <td>
-            <button onclick="location.href='?do=edit_goods'">修改</button>
-            <button onclick="del('type','id')">刪除</button>
-            <button onclick="show()">上架</button>
-            <button onclick="show()">下架</button>
+            <button onclick="location.href='?do=edit_goods&id=<?=$good['id'];?>'">修改</button>
+            <button onclick="del('goods',<?=$good['id'];?>)">刪除</button>
+            <button onclick="show(<?=$good['id'];?>,1)">上架</button>
+            <button onclick="show(<?=$good['id'];?>,0)">下架</button>
         </td>
     </tr>
+    <?php
+    }
+    ?>
 </table>
 
 <script>
     $("#parent").load("api/get_type.php");
 
+    // 顯示大中分類
     function newType(type){
         let name, parent;
         switch(type){
@@ -105,6 +113,7 @@
         })
     }
 
+    // 修改分類內容
     function edit(dom,id){
         let text= $(dom).parent().prev().text();
         let name = prompt("請輸入要修改的分類文字",text);
@@ -117,6 +126,13 @@
                 $(`#parent option[value='${id}']`).text(name);
             })
         }
+    }
+    
+    // 顯示上架/下架
+    function show(id,sh){
+        $.post("api/save_goods.php",{id,sh},()=>{
+            location.reload();
+        })
     }
 
     // function newBig(){
