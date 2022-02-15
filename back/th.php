@@ -57,7 +57,7 @@
 <hr>
 <h1 class="ct">商品管理</h1>
 <div class="ct">
-    <button>新增商品</button>
+    <button onclick="location.href='?do=add_goods'">新增商品</button>
 </div>
 <!-- emmet -->
 <!-- table.all>tr.tt.ct>td*5 -->
@@ -75,10 +75,10 @@
         <td></td>
         <td></td>
         <td>
-            <button>修改</button>
+            <button onclick="location.href='?do=edit_goods'">修改</button>
             <button onclick="del('type','id')">刪除</button>
-            <button>上架</button>
-            <button>下架</button>
+            <button onclick="show()">上架</button>
+            <button onclick="show()">下架</button>
         </td>
     </tr>
 </table>
