@@ -18,14 +18,15 @@
 
     <!-- 大分類 START -->
     <?php
-    // 找到所有parent=0的大分類，並給予name排序
+    // 找到所有parent=0的大分類，並給予name排序(預設ASC升序)
     $bigs=$Type->all(['parent'=>0],"ORDER BY name");
         foreach ($bigs as $key => $big) {
     ?>
     <tr class="tt">
         <td><?=$big['name'];?></td>
         <td class="ct">
-            <button onclick="edit('<?=$big['id'];?>')">修改</button>
+            <!-- HTML的this: 當下的元素(含內容) -->
+            <button onclick="edit(this,'<?=$big['id'];?>')">修改</button>
             <button onclick="del('type','<?=$big['id'];?>')">刪除</button>
         </td>
     </tr>
@@ -42,7 +43,7 @@
     <tr class="pp ct">
         <td><?=$mid['name'];?></td>
         <td>
-            <button onclick="edit('<?=$mid['id'];?>')">修改</button>
+            <button onclick="edit(this,'<?=$big['id'];?>')">修改</button>
             <button onclick="del('type','<?=$mid['id'];?>')">刪除</button>
         </td>
     </tr>
@@ -102,6 +103,20 @@
             // console.log(res);
             location.reload();
         })
+    }
+
+    function edit(dom,id){
+        let text= $(dom).parent().prev().text();
+        let name = prompt("請輸入要修改的分類文字",text);
+        if(name!=null){
+            $.post("/api/save_type.php",{id,name},(res)=>{
+                // location.reload();
+                // 存到SQL後直接更改text/選單內容
+                // 因為type表內的id欄位絕對不會重複故使用id抓內容
+                $(dom).parent().prev().text(name);
+                $(`#parent option[value='${id}']`).text(name);
+            })
+        }
     }
 
     // function newBig(){
