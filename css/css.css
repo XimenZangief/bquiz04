@@ -65,7 +65,8 @@ body
 }
 .all td
 {
-	min-width:100px;
+	/* 由於back/order.php太寬，故min-width:100px->50px */
+	min-width:50px;
 	padding:10px;
 }
 .tt
