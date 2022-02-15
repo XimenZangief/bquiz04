@@ -2,13 +2,13 @@
 <div>
     新增大分類
     <input type="text" name="big" id="big">
-    <button onclick="newBig()">新增</button>
+    <button onclick="newType('big')">新增</button>
 </div>
 <div>
     新增中分類
     <select name="parent" id="parent"></select>
     <input type="text" name="mid" id="mid">
-    <button onclick="newMid()">新增</button>
+    <button onclick="newType('mid')">新增</button>
 </div>
 
 <!-- 分類區 -->
@@ -44,19 +44,38 @@
 <script>
     $("#parent").load("api/get_big.php");
 
-    function newBig(){
-        let big=$("#big").val();
-        $.post("api/new_big.php",{name:big},(res)=>{
+    function newType(type){
+        let name, parent;
+        switch(type){
+            case "big":
+                name=$("#big").val();
+                parent=0;
+                break;
+            case "mid":
+                name=$("#mid").val();
+                parent=$("#parent").val();
+                break;
+        }
+        $.post("api/save_type.php",{name,parent},(res)=>{
+            // 沒有回傳值所以log一片空白
             // console.log(res);
             location.reload();
         })
     }
-    function newMid(){
-        let parent=$("#parent").val();
-        let mid=$("#mid").val();
-        $.post("api/new_mid.php",{name:mid,parent},(res)=>{
-            // console.log(res);
-            location.reload();
-        })
-    }
+
+    // function newBig(){
+    //     let big=$("#big").val();
+    //     $.post("api/new_big.php",{name:big,parent:0},(res)=>{
+    //         // console.log(res);
+    //         location.reload();
+    //     })
+    // }
+    // function newMid(){
+    //     let parent=$("#parent").val();
+    //     let mid=$("#mid").val();
+    //     $.post("api/new_mid.php",{name:mid,parent},(res)=>{
+    //         // console.log(res);
+    //         location.reload();
+    //     })
+    // }
 </script>
