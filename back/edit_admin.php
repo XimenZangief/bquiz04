@@ -4,7 +4,7 @@ $row=$Admin->find($_GET['id']);
 $pr=unserialize($row['pr']);
 ?>
 
-<!-- copy from add_admin.php -->
+<!-- copy from edit_admin.php -->
 <h1 class="ct">新增管理帳號</h1>
 <!-- emmet -->
 <!-- table.all>tr*3>td.tt.ct+td.pp>input:text -->
