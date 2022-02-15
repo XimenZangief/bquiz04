@@ -15,6 +15,8 @@
 <!-- emmet -->
 <!-- table.all>tr.tt>td+td.ct>button*2 -->
 <table class="all">
+
+    <!-- 大分類 START -->
     <?php
     // 找到所有parent=0的大分類，並給予name排序
     $bigs=$Type->all(['parent'=>0],"ORDER BY name");
@@ -27,6 +29,9 @@
             <button onclick="del('type','<?=$big['id'];?>')">刪除</button>
         </td>
     </tr>
+    <!-- 大分類 END -->
+    
+    <!-- 中分類 START -->
     <?php
     // 透過id欄位確認mid所屬的大分類
     $mids=$Type->all(['parent'=>$big['id']]);
@@ -41,6 +46,7 @@
             <button onclick="del('type','<?=$mid['id'];?>')">刪除</button>
         </td>
     </tr>
+    <!-- 中分類 END -->
     <?php
         }
     }
