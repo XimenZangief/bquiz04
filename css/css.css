@@ -22,7 +22,9 @@ body
 	display:inline-block;
 	width:20%;
 	padding:2%;
-	min-height:550px;
+	/* 不要讓左框架一直跳動 */
+	height:550px;
+	overflow: auto;
 	vertical-align:top;
 	border:#000 1px solid;
 }
