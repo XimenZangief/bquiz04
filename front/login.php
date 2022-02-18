@@ -40,7 +40,7 @@
                 $.post("api/chk_pw.php", {
                         table:'member',
                         acc: $("#acc").val(),
-                        pw: $("#pw").val()
+                        pw: $("#pw").val(),
                     },
                     (check) => {
                         if (parseInt(check)) {

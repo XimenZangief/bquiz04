@@ -36,8 +36,8 @@
                 $.post("api/chk_pw.php", {
                         // 由於後台有權限問題，有admin與member兩張資料表，此處指定後台資料表
                         table:'admin',
-                        acc: $("#acc".val()),
-                        pw: $("#pw".val())
+                        acc: $("#acc").val(),
+                        pw: $("#pw").val(),
                     },
                     (check) => {
                         if (parseInt(check)) {
