@@ -39,8 +39,8 @@
             if (parseInt(chk)) {
                 $.post("api/chk_pw.php", {
                         table:'member',
-                        acc: $("#acc".val()),
-                        pw: $("#pw".val())
+                        acc: $("#acc").val(),
+                        pw: $("#pw").val()
                     },
                     (check) => {
                         if (parseInt(check)) {

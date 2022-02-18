@@ -1,3 +1,7 @@
+<?php
+$good=$Goods->find([$_GET['id']]);
+?>
+
 <!-- copy from add_goods.php -->
 <h1 class="ct">修改商品</h1>
 <!-- emmet -->
@@ -22,23 +26,23 @@
         </tr>
         <tr>
             <td class="tt ct">商品編號</td>
-            <td class="pp">完成分類後自動分配</td>
+            <td class="pp"><?=$good['no'];?></td>
         </tr>
         <tr>
             <td class="tt ct">商品名稱</td>
-            <td class="pp"><input type="text" name="name" id="name"></td>
+            <td class="pp"><input type="text" name="name" value="<?=$good['name'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品價格</td>
-            <td class="pp"><input type="text" name="price" id="price"></td>
+            <td class="pp"><input type="text" name="price" value="<?=$good['price'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">規格</td>
-            <td class="pp"><input type="text" name="spec" id="spec"></td>
+            <td class="pp"><input type="text" name="spec" value="<?=$good['spec'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">庫存量</td>
-            <td class="pp"><input type="text" name="stock" id="stock"></td>
+            <td class="pp"><input type="text" name="stock" value="<?=$good['stock'];?>"></td>
         </tr>
         <tr>
             <td class="tt ct">商品圖片</td>
@@ -47,13 +51,12 @@
         <tr>
             <td class="tt ct">商品介紹</td>
             <td class="pp">
-                <textarea name="intro" id="intro" style="width:90%;height:100px"></textarea>
+                <textarea name="intro" id="intro" style="width:90%;height:100px"><?=$good['intro'];?></textarea>
             </td>
         </tr>
     </table>
-    <!-- <button onclick="addAdmin()">新增</buttom> -->
-    <!-- <button onclick="reset()">重置</button> -->
-    <button type="submit">新增</button>
+    <input type="hidden" name="id" value="<?=$good['id'];?>">
+    <button type="submit">修改</button>
     <button type="reset">重置</button>
     <button type="button" onclick="location.href='?do=th'">返回</button>
 </form>
@@ -62,11 +65,17 @@
 <script>
     // callback，顯示大中分類選項
     $("#big").load("api/get_type.php",()=>{
-        $("#mid").load("api/get_type.php",{parent:$("#big").val()})
+
+        // 大分類完全載入完成才選定商品的大分類項目
+        $("#big option[value='<?=$good['big'];?>']").prop('selected',true);
+        $("#mid").load("api/get_type.php",{parent:$("#big").val()},()=>{
+            // 中分類完全載入完成才選定商品的中分類項目
+            $("#mid option[value='<?=$good['mid'];?>']").prop('selected',true);
+        });
     });
 
     $("#big").on("change",function(){
         // 根據大分類選單改變中分類選單
-        $("#mid").load("api/get_type.php",{parent:$("#big").val()})
+        $("#mid").load("api/get_type.php",{parent:$("#big").val()});
     })
 </script>
