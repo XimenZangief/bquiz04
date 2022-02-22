@@ -34,7 +34,8 @@
     <div id="left" class="ct">
       <div style="min-height:400px;">
         <div class="ww">
-          <a href="#">
+          <a href="?type=0">
+            <!-- 參照main.php，type=0會導入全部商品 -->
             全部商品(<?= $Goods->math('count', '*', ['sh' => 1]); ?>)
           </a>
         </div>

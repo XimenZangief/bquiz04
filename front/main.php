@@ -30,7 +30,7 @@ foreach ($rows as $row) {
         <div class="pp ct" style="padding:10px; width:40%">
             <!-- 點商品圖片進入詳細頁面 -->
             <a href="?do=detail&id=<? $row['id']; ?>">
-                <img src="../img/<?= $row['img']; ?>" style="width:70%;">
+                <img src="../icon/<?= $row['img']; ?>" style="width:70%;">
             </a>
         </div>
         <div class="pp" style="width:60%;">
