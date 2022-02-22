@@ -37,8 +37,8 @@ foreach ($rows as $row) {
             <div class="tt ct"><?= $row['name']; ?></div>
             <div>價錢：<?= $row['price']; ?>
                 <!-- 到buycart頁面同時傳$_GET商品id和預設數量1 -->
-                <a href="?do=buycart&id=<? $row['id']; ?>&qt=1" style="float:right;">
-                    <img src="img/0402.jpg" alt="">
+                <a href="?do=buycart&id=<?= $row['id']; ?>&qt=1" style="float:right;">
+                    <img src="icon/0402.jpg" alt="">
                 </a>
             </div>
             <div>規格：<?= $row['spec']; ?></div>

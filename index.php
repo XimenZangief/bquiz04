@@ -54,7 +54,7 @@
             foreach ($mids as $mid) {
               echo "<div class='s'>";
               // 帶個中分類參數進來
-              echo "  <a href='#' style='margin-left:100px;background:lightgreen;'>";
+              echo "  <a href='?type={$mid['id']}' style='margin-left:100px;background:lightgreen;'>";
               echo      $mid['name'];
                         // 算出sh=1的mid的總數
               echo "    ({$Goods->math('count','*',['mid'=>$mid['id'],'sh'=>1])})";
