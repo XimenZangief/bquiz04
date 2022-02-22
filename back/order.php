@@ -30,7 +30,7 @@
         <td><?=date("Y/m/d",strtotime($row['orddate']));?></td>
         <td>
             <!-- js內的del(table,id) -->
-            <button onclick="del('member',<?=$row['id'];?>)">刪除</button>
+            <button onclick="del('ord',<?=$row['id'];?>)">刪除</button>
             <?php
             }
             ?>
