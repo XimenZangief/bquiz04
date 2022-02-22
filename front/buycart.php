@@ -42,7 +42,7 @@ if (empty($_SESSION['cart'])) {
         <td><?= $item['price']; ?></td>
         <td><?= $item['price'] * $qt; ?></td>
         <td>
-            <img src="../icon/0415.jpg" >
+            <img src="../icon/0415.jpg" onclick="delCart(this,<?=$item['id'];?>)">
         </td>
     </tr>
     <?php
@@ -53,3 +53,15 @@ if (empty($_SESSION['cart'])) {
     <img src="icon/0411.jpg" onclick="location.href='index.php'"> | 
     <img src="icon/0411.jpg" onclick="location.href='?do=checkout'">
 </div>
+
+<script>
+    function delCart(dom,id){
+        $.post("api/del_cart.php",{id},()=>{
+            // 直接清空按下元素的列
+            // $(dom).parents('tr').remove();
+            // 藉由導向指定頁來排除
+            // 「url卡著id&qt導致商品無法刪除」的狀況
+            location.href="?do=buycart";
+        })        
+    }
+</script>
